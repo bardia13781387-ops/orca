@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز تخصصی آموزشی تمرینی شنا اورکا لند - آموزش حرفه‌ای شنا</title>
+    <meta name="description" content="مرکز تخصصی آموزشی تمرینی شنا اورکا لند با مربیان نخبه و دوره‌های تخصصی کرال، پروانه و Swimrun. آموزش شنا در تهران">
+    <meta property="og:title" content="اورکا لند - مرکز تخصصی آموزشی تمرینی شنا">
+    <meta property="og:description" content="آموزش شنا با مربیان مجرب و تجهیزات مدرن">
+    <meta property="og:image" content="hero-image.jpg">
+    <meta property="og:url" content="https://orcaland.com">
+    <meta property="og:type" content="website">
+    <link rel="image_src" href="hero-image.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --ocean-gradient: linear-gradient(135deg, rgba(0, 20, 40, 0.7) 0%, rgba(0, 50, 100, 0.8) 50%, rgba(0, 10, 50, 0.9) 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #f0f8ff;
+            --text-muted: #e0f2fe;
+            --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 30px rgba(255, 255, 255, 0.1);
+            --ocean-blue: #00bfff;
+            --cyan-glow: #00ffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            direction: rtl;
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ocean-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .wave-container {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.6;
+            animation: waveFlow 3s ease-in-out infinite;
+            filter: blur(1px);
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .wave:nth-child(1) { animation-delay: 0s; opacity: 0.8; height: 80px; }
+        .wave:nth-child(2) { animation-delay: -1s; opacity: 0.6; height: 100px; left: 20px; }
+        .wave:nth-child(3) { animation-delay: -2s; opacity: 0.4; height: 120px; right: 20px; }
+
+        @keyframes waveFlow {
+            0%, 100% {
+                transform: translateX(-100px) scaleX(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(100px) scaleX(1.2);
+                opacity: 1;
+            }
+        }
+
+        .preloader-logo {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cyan-glow);
+            text-shadow: 0 0 30px var(--cyan-glow), 0 0 50px var(--ocean-blue);
+            opacity: 0;
+            transform: translateY(50px) scale(0.5);
+            animation: logoReveal 2s ease-out 1s forwards;
+            letter-spacing: -0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .preloader-logo i {
+            font-size: 2.5rem;
+            animation: fishSwim 2s ease-out 1s forwards;
+        }
+
+        @keyframes logoReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fishSwim {
+            0% { transform: translateX(-50px) rotate(-10deg); opacity: 0; }
+            100% { transform: translateX(0) rotate(0deg); opacity: 1; }
+        }
+
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            animation: bubbleRise 4s linear infinite;
+        }
+
+        .bubble:nth-child(1) { width: 10px; height: 10px; left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: -1s; }
+        .bubble:nth-child(3) { width: 8px; height: 8px; left: 80%; animation-delay: -2s; }
+        .bubble:nth-child(4) { width: 12px; height: 12px; left: 90%; animation-delay: -0.5s; }
+        .bubble:nth-child(5) { width: 20px; height: 20px; left: 50%; animation-delay: -3s; opacity: 0.7; }
+
+        @keyframes bubbleRise {
+            0% {
+                bottom: -10%;
+                opacity: 0;
+                transform: scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        .local-photo-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(0, 20, 40, 0.65) 0%, 
+                    rgba(0, 30, 60, 0.75) 50%, 
+                    rgba(0, 10, 30, 0.85) 100%),
+                url('b1.jpg') center/cover no-repeat;
+        }
+
+        header {
+            background: rgba(0, 20, 40, 0.95);
+            backdrop-filter: blur(10px) saturate(150%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.4rem 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.25s ease;
+            will-change: transform;
+            height: 50px;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            font-size: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.2rem;
+            position: relative;
+            transition: all 0.25s ease;
+            letter-spacing: 0.01em;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+            white-space: nowrap;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #00bfff, #00ffff);
+            transition: width 0.3s ease;
+            border-radius: 0.5px;
+        }
+
+        .nav-item a:hover {
+            color: #00ffff;
+            transform: translateY(-1px);
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        .insta-btn-glass {
+            position: relative;
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.01em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            background: transparent;
+            border: none;
+            backdrop-filter: blur(20px);
+        }
+
+        .insta-glass-container {
+            position: relative;
+            padding: 0.5rem 1.2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(228, 64, 95, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .insta-glass-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(228, 64, 95, 0.3) 0%,
+                rgba(247, 119, 55, 0.4) 50%,
+                rgba(228, 64, 95, 0.3) 100%
+            );
+            opacity: 0.8;
+            transition: all 0.4s ease;
+        }
+
+        .insta-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .insta-content i {
+            font-size: 0.9rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .insta-content span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .insta-glow {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            border-radius: 14px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .insta-btn-glass:hover .insta-glass-container {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 40px rgba(228, 64, 95, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .insta-btn-glass:hover .insta-glass-bg {
+            opacity: 1;
+            background: linear-gradient(
+                135deg,
+                rgba(228, 64, 95, 0.5) 0%,
+                rgba(247, 119, 55, 0.6) 50%,
+                rgba(228, 64, 95, 0.5) 100%
+            );
+        }
+
+        .insta-btn-glass:hover .insta-content {
+            transform: scale(1.05);
+        }
+
+        .insta-btn-glass:hover .insta-content i {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        .insta-btn-glass:hover .insta-glow {
+            opacity: 1;
+            animation: instaGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes instaGlow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+
+        .insta-glass-container {
+            animation: glassAppear 0.6s ease-out;
+        }
+
+        @keyframes glassAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        main {
+            margin-top: 50px;
+            min-height: calc(100vh - 50px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero {
+            height: auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3 / 4;
+            margin: 1rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(0, 191, 255, 0.08);
+            z-index: 5;
+            flex-shrink: 0;
+            transition: none;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            alt="مرکز تخصصی آموزشی تمرینی شنا اورکا لند - آموزش حرفه‌ای شنا در تهران | تکنیک‌های پیشرفته شنا | مربیان نخبه";
+            loading="eager";
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            transition: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            width: 90%;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+            background: rgba(0, 20, 40, 0.88);
+            backdrop-filter: blur(20px) saturate(150%);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-dark), var(--shadow-glow);
+            position: relative;
+            z-index: 15;
+            margin: 1rem auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00bfff, #00ffff);
+            color: #001f3f;
+            padding: 0.9rem 2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
+            text-shadow: none;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            padding: 0.9rem 2rem;
+            border: 1.5px solid var(--glass-border);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(15px);
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 191, 255, 0.15);
+            border-color: #00ffff;
+            color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.25);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(0, 20, 40, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin: 1.5rem auto;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        .photo-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            will-change: transform;
+            z-index: 15;
+            box-shadow: var(--shadow-dark);
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-dark), var(--shadow-glow);
+            border-color: rgba(0, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .photo-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #00ffff;
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .photo-card:hover .card-icon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .video-gallery {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: var(--shadow-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-dark), 0 0 30px rgba(0, 191, 255, 0.4);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 191, 255, 0.6);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 191, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.8);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .video-card:hover .play-button {
+            background: rgba(0, 255, 255, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.9);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 10, 20, 0.95);
+            z-index: 9999;
+            backdrop-filter: blur(20px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: lightboxFadeIn 0.4s ease-out;
+        }
+
+        @keyframes lightboxFadeIn {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+            to {
+                opacity: 1;
+                backdrop-filter: blur(20px);
+            }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.8),
+                0 0 60px rgba(0, 191, 255, 0.4);
+            animation: lightboxScaleIn 0.4s ease-out;
+        }
+
+        @keyframes lightboxScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            display: block;
+            background: #000;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            transform: translateY(-50%);
+            z-index: 10000;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0, 191, 255, 0.3);
+            border-color: rgba(0, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-dark), var(--shadow-glow);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #00ffff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-family: 'Scheherazade New', serif;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: rgba(0, 20, 40, 0.95);
+            backdrop-filter: blur(15px) saturate(150%);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-family: 'Scheherazade New', serif;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #00ffff;
+            transform: translateX(-5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 0.5rem;
+                height: auto;
+                padding: 0.5rem 0;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+            }
+            
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+            }
+            
+            .lightbox-nav {
+                padding: 0 15px;
+            }
+            
+            .lightbox-prev,
+            .lightbox-next {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="preloader-logo">
+            <i class="fas fa-fish"></i>
+            اورکا لند
+        </div>
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" onclick="changeVideo(-1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="lightbox-next" onclick="changeVideo(1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="lightbox-content">
+            <video controls class="lightbox-video" id="lightbox-video">
+                مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+            </video>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="local-photo-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-water"></i>
+                اورکا لند
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home">خانه</a></li>
+                <li class="nav-item"><a href="#services">خدمات</a></li>
+                <li class="nav-item"><a href="#gallery">گالری</a></li>
+                <li class="nav-item"><a href="#videos">ویدیوها</a></li>
+            </ul>
+            <!-- دکمه اینستاگرام شیشه‌ای حرفه‌ای -->
+            <a href="https://instagram.com/orcaland" class="insta-btn-glass" target="_blank">
+                <div class="insta-glass-container">
+                    <div class="insta-glass-bg"></div>
+                    <div class="insta-content">
+                        <i class="fab fa-instagram"></i>
+                        <span>اینستاگرام</span>
+                    </div>
+                    <div class="insta-glow"></div>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-image-container">
+                <img src="hero-image.jpg" class="hero-image" alt="مرکز تخصصی آموزشی تمرینی شنا اورکا لند">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">مرکز تخصصی آموزشی تمرینی شنا اورکا لند</h1>
+                <p class="hero-subtitle">
+                    آموزش حرفه‌ای شنا با مربیان نخبه و دوره‌های تخصصی کرال، پروانه و Swimrun. 
+                    تجهیزات مدرن و محیطی امن برای یادگیری مهارت‌های شنا در تهران.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">
+                        <i class="fas fa-swimmer"></i>
+                        مشاهده دوره‌ها
+                    </a>
+                    <a href="#gallery" class="btn-secondary">
+                        <i class="fas fa-images"></i>
+                        گالری تصاویر
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="section-header">
+                <h2 class="section-title">خدمات ما</h2>
+                <p class="section-subtitle">با بهترین خدمات و مربیان حرفه‌ای در کنار شما هستیم</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-swimmer card-icon"></i>
+                    <h3 class="service-title">آموزش کرال</h3>
+                    <p class="service-description">آموزش تکنیک‌های پیشرفته کرال با مربیان بین‌المللی و روش‌های مدرن</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-fish card-icon"></i>
+                    <h3 class="service-title">شنا پروانه</h3>
+                    <p class="service-description">یادگیری حرفه‌ای شنا پروانه با تمرینات تخصصی و برنامه‌ریزی شخصی</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-running card-icon"></i>
+                    <h3 class="service-title">Swimrun</h3>
+                    <p class="service-description">تمرینات ترکیبی شنا و دو برای آمادگی در مسابقات تریاتلون</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section" id="gallery">
+            <div class="section-header">
+                <h2 class="section-title">گالری تصاویر</h2>
+                <p class="section-subtitle">لحظات زیبای آموزش و پیشرفت شناگران ما</p>
+            </div>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <i class="fas fa-trophy card-icon"></i>
+                    <h3 class="card-title">مسابقات استانی</h3>
+                    <p class="card-text">شرکت موفق شناگران ما در مسابقات استانی و کسب مقام‌های برتر</p>
+                </div>
+                <div class="photo-card">
+                    <i class="fas fa-users card-icon"></i>
+                    <h3 class="card-title">کلاس‌های گروهی</h3>
+                    <p class="card-text">آموزش در محیطی پویا و دوستانه با کلاس‌های گروهی متنوع</p>
+                </div>
+                <div class="photo-card">
+                    <i class="fas fa-user-graduate card-icon"></i>
+                    <h3 class="card-title">مربیان مجرب</h3>
+                    <p class="card-text">تیم مربیان حرفه‌ای با مدارک بین‌المللی و سابقه درخشان</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Gallery -->
+        <section class="video-gallery" id="videos">
+            <div class="section-header">
+                <h2 class="section-title">ویدیوهای آموزشی</h2>
+                <p class="section-subtitle">آموزش تصویری تکنیک‌های مختلف شنا</p>
+            </div>
+            <div class="video-container">
+                <div class="video-card" onclick="openLightbox(0)">
+                    <video class="video-thumbnail" id="video-thumb-0">
+                        <source src="or1.mp4" type="video/mp4">
+                        مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                    </video>
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-card" onclick="openLightbox(1)">
+                    <video class="video-thumbnail" id="video-thumb-1">
+                        <source src="or2.mp4" type="video/mp4">
+                        مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                    </video>
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <i class="fas fa-water"></i>
+                    اورکا لند
+                </div>
+                <p class="footer-description">
+                    مرکز تخصصی آموزشی تمرینی شنا با تعهد به کیفیت و پیشرفت شناگران. 
+                    ما با بهترین تجهیزات و مربیان مجرب در کنار شما هستیم.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-heading">لینک‌های مفید</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">صفحه اصلی</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#gallery">گالری</a></li>
+                    <li><a href="#videos">ویدیوها</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 اورکا لند. تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                document.body.style.opacity = '1';
+            }, 2000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 15, 30, 0.98)';
+                header.style.backdropFilter = 'blur(15px) saturate(180%)';
+            } else {
+                header.style.background = 'rgba(0, 20, 40, 0.95)';
+                header.style.backdropFilter = 'blur(10px) saturate(150%)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Lightbox functionality
+        const videos = [
+            { src: 'or1.mp4', title: 'ویدیو اول' },
+            { src: 'or2.mp4', title: 'ویدیو دوم' }
+        ];
+
+        let currentVideoIndex = 0;
+
+        function openLightbox(index) {
+            currentVideoIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            
+            lightboxVideo.src = videos[index].src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Play video when lightbox opens
+            setTimeout(() => {
+                lightboxVideo.play();
+            }, 400);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            
+            lightboxVideo.pause();
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeVideo(direction) {
+            currentVideoIndex += direction;
+            
+            if (currentVideoIndex < 0) {
+                currentVideoIndex = videos.length - 1;
+            } else if (currentVideoIndex >= videos.length) {
+                currentVideoIndex = 0;
+            }
+            
+            const lightboxVideo = document.getElementById('lightbox-video');
+            lightboxVideo.src = videos[currentVideoIndex].src;
+            lightboxVideo.play();
+        }
+
+        // Close lightbox on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox when clicking on backdrop
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
