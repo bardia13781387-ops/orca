@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز تخصصی آموزشی تمرینی شنا اورکا لند | آموزش حرفه‌ای شنا</title>
+    <meta name="description" content="مرکز تخصصی شنا اورکا لند با مربیان نخبه و دوره‌های تخصصی کرال، پروانه و Swimrun. آموزش شنا در تهران با ۴ استخر مجهز. بهترین آموزش شنا تهران.">
+    <meta name="keywords" content="آموزش شنا, شنا تهران, استخر شیرودی, فرهنگسرا اشراق, استخر اندیشه, مینی‌سینی, اورکا لند, مربی شنا, کلاس شنا, کرال, پروانه, قورباغه, Swimrun">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://orcaland.com">
+    <meta property="og:title" content="اورکا لند - مرکز تخصصی آموزشی تمرینی شنا">
+    <meta property="og:description" content="آموزش شنا با مربیان مجرب و تجهیزات مدرن | ۱۰ ویدیوی آموزشی | ۴ استخر در تهران">
+    <meta property="og:image" content="hero-image.jpg">
+    <meta property="og:url" content="https://orcaland.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="اورکا لند - آموزش حرفه‌ای شنا">
+    <meta name="twitter:description" content="مرکز تخصصی شنا اورکا لند با ۴ استخر در تهران. آموزش کرال، پروانه و Swimrun.">
+    <meta name="twitter:image" content="hero-image.jpg">
+    <link rel="image_src" href="hero-image.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cartocdn.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text-primary: #ffffff;
+            --text-secondary: #f0f8ff;
+            --text-muted: #e0f2fe;
+            --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.7);
+            --ocean-blue: #00bfff;
+            --cyan-glow: #00ffff;
+            --card-radius: 16px;
+            --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            direction: rtl;
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            background: #000a1a;
+        }
+
+        .preloader {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(135deg, rgba(0,20,40,0.7) 0%, rgba(0,50,100,0.8) 50%, rgba(0,10,50,0.9) 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
+            backdrop-filter: blur(10px);
+        }
+        .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .wave-container { position: relative; width: 300px; height: 150px; margin-bottom: 2rem; }
+        .wave { position: absolute; bottom:0; width:100%; height:100px; background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; opacity:0.6; animation: waveFlow 3s ease-in-out infinite; filter: blur(1px); box-shadow: 0 0 20px var(--cyan-glow); }
+        .wave:nth-child(1) { animation-delay: 0s; opacity:0.8; height:80px; }
+        .wave:nth-child(2) { animation-delay: -1s; opacity:0.6; height:100px; left:20px; }
+        .wave:nth-child(3) { animation-delay: -2s; opacity:0.4; height:120px; right:20px; }
+        @keyframes waveFlow { 0%,100% { transform: translateX(-100px) scaleX(1); opacity:0.3; } 50% { transform: translateX(100px) scaleX(1.2); opacity:1; } }
+        .preloader-logo { font-family: 'Scheherazade New', serif; font-size:3rem; font-weight:700; color:var(--cyan-glow); text-shadow:0 0 30px var(--cyan-glow),0 0 50px var(--ocean-blue); opacity:0; transform:translateY(50px) scale(0.5); animation:logoReveal 2s ease-out 1s forwards; display:flex; align-items:center; gap:0.5rem; }
+        .preloader-logo i { font-size:2.5rem; animation:fishSwim 2s ease-out 1s forwards; }
+        @keyframes logoReveal { to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes fishSwim { 0% { transform:translateX(-50px) rotate(-10deg); opacity:0; } 100% { transform:translateX(0) rotate(0deg); opacity:1; } }
+
+        .local-photo-bg {
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+            background: linear-gradient(135deg, rgba(0,20,40,0.6) 0%, rgba(0,30,60,0.7) 50%, rgba(0,10,30,0.82) 100%), url('b1.jpg') center/cover no-repeat;
+        }
+
+        header {
+            background: rgba(0,18,36,0.94); backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            position: fixed; top:0; left:0; right:0; z-index:1000;
+            padding: 0.35rem 1rem; border-bottom: 1px solid var(--glass-border);
+            height: 52px;
+        }
+        .header-container {
+            max-width:1200px; margin:0 auto; display:flex; justify-content:flex-start; align-items:center; height:100%;
+        }
+        .logo {
+            font-family:'Scheherazade New',serif; font-size:1.25rem; font-weight:700; color:var(--text-primary);
+            display:flex; align-items:center; gap:0.35rem; text-shadow:0 1px 5px rgba(0,0,0,0.8); white-space:nowrap; cursor:pointer;
+        }
+        .logo i { font-size:1.1rem; color:var(--cyan-glow); }
+
+        main { margin-top:52px; min-height:calc(100vh - 52px); position:relative; z-index:10; }
+
+        .page { display:none; animation:fadeInUp 0.5s ease-out; }
+        .page.active { display:block; }
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+        .floating-toolbar {
+            position:fixed; bottom:2rem; right:2rem; z-index:1500;
+            display:flex; flex-direction:column; gap:0.7rem; align-items:flex-end;
+        }
+        .toolbar-btn {
+            background:rgba(0,30,60,0.8); backdrop-filter:blur(20px); border:1px solid var(--glass-border);
+            border-radius:50px; padding:0.7rem 1.4rem; color:white; text-decoration:none; font-weight:600;
+            font-size:0.8rem; display:flex; align-items:center; gap:0.5rem;
+            box-shadow:0 8px 30px rgba(0,0,0,0.6); cursor:pointer;
+        }
+        .toolbar-btn i { font-size:1rem; color:var(--cyan-glow); }
+        .toolbar-btn:hover {
+            background:rgba(0,191,255,0.15); border-color:var(--cyan-glow); transform:translateY(-2px);
+        }
+
+        .hero {
+            min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+            text-align:center; padding:2rem 1rem;
+        }
+        .hero-image-container {
+            width:100%; max-width:550px; aspect-ratio:3/4; margin:0.5rem auto; border-radius:18px;
+            overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.6);
+        }
+        .hero-image { width:100%; height:100%; object-fit:cover; }
+        .hero-content {
+            max-width:850px; width:92%; background:rgba(0,18,36,0.86); backdrop-filter:blur(22px) saturate(150%);
+            padding:2.2rem 1.8rem; border-radius:20px; border:1px solid var(--glass-border);
+            box-shadow:var(--shadow-dark); margin:0.5rem auto;
+        }
+        .hero-title {
+            font-family:'Scheherazade New',serif; font-size:clamp(2rem,4.5vw,3.5rem); font-weight:700;
+            margin-bottom:0.8rem; text-shadow:0 2px 18px rgba(0,0,0,0.9);
+        }
+        .hero-subtitle { font-size:clamp(0.9rem,1.6vw,1.05rem); color:var(--text-secondary); margin-bottom:1.8rem; opacity:0.92; }
+
+        .section { padding:4rem 1.5rem; max-width:1200px; margin:0 auto; }
+        .section-glass {
+            background:rgba(0,18,36,0.72); backdrop-filter:blur(12px); border-radius:18px; margin:1.5rem auto;
+            border:1px solid var(--glass-border); box-shadow:var(--shadow-dark); padding:3rem 1.5rem;
+        }
+        .section-header { text-align:center; margin-bottom:2.5rem; }
+        .section-title {
+            font-family:'Scheherazade New',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700;
+            margin-bottom:0.6rem; text-shadow:0 2px 15px rgba(0,0,0,0.9);
+        }
+        .section-subtitle { font-size:1rem; color:var(--text-secondary); opacity:0.88; }
+
+        .features-mini-grid {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; max-width:900px; margin:0 auto;
+        }
+        .feature-mini-card {
+            background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border);
+            border-radius:14px; padding:1.5rem 1rem; text-align:center; transition:all var(--transition-smooth);
+        }
+        .feature-mini-card:hover {
+            transform:translateY(-4px); border-color:rgba(0,255,255,0.3); box-shadow:0 10px 30px rgba(0,191,255,0.15);
+        }
+        .feature-mini-card i { font-size:2rem; color:var(--cyan-glow); margin-bottom:0.6rem; }
+        .feature-mini-card h4 { font-size:0.95rem; font-weight:600; }
+        .feature-mini-card p { font-size:0.78rem; color:var(--text-muted); }
+
+        .manager-card {
+            background:linear-gradient(145deg,rgba(0,191,255,0.12) 0%,rgba(0,255,255,0.08) 100%);
+            backdrop-filter:blur(30px); border:1px solid rgba(0,255,255,0.25); border-radius:28px;
+            padding:2rem; max-width:600px; margin:2rem auto; display:flex; align-items:center; gap:2rem;
+            box-shadow:0 20px 60px rgba(0,0,0,0.7);
+        }
+        .manager-photo-frame {
+            width:150px; height:150px; border-radius:50%; overflow:hidden; border:3px solid var(--cyan-glow);
+            box-shadow:0 0 25px rgba(0,255,255,0.4);
+        }
+        .manager-photo-frame img { width:100%; height:100%; object-fit:cover; }
+        .manager-info { flex:1; text-align:right; }
+        .manager-name {
+            font-family:'Scheherazade New',serif; font-size:2rem; font-weight:700; color:var(--cyan-glow);
+            text-shadow:0 0 15px rgba(0,255,255,0.4);
+        }
+        .manager-role { font-size:1rem; color:#fff; margin:0.3rem 0; }
+        .manager-exp { font-size:0.85rem; color:var(--text-muted); margin-bottom:0.7rem; }
+        .manager-bio { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; margin-bottom:1rem; }
+        .manager-social { display:flex; gap:1rem; justify-content:flex-start; }
+        .manager-social a { color:var(--text-secondary); font-size:1.3rem; transition:all var(--transition-fast); }
+        .manager-social a:hover { color:var(--cyan-glow); transform:translateY(-2px); }
+
+        .video-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; max-width:1100px; margin:0 auto;
+        }
+        .video-card {
+            position:relative; aspect-ratio:16/10; border-radius:var(--card-radius); overflow:hidden;
+            cursor:pointer; border:1px solid var(--glass-border); box-shadow:0 8px 28px rgba(0,0,0,0.5);
+            transition:all var(--transition-smooth);
+        }
+        .video-card:hover {
+            transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,191,255,0.2); border-color:rgba(0,255,255,0.35);
+        }
+        .video-thumb { width:100%; height:100%; object-fit:cover; }
+        .video-play-overlay {
+            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:48px; height:48px;
+            background:rgba(0,191,255,0.8); border-radius:50%; display:flex; align-items:center; justify-content:center;
+            pointer-events:none; transition:all var(--transition-fast); z-index:3;
+        }
+        .video-play-overlay i { color:white; font-size:1rem; }
+        .video-card:hover .video-play-overlay {
+            background:rgba(0,255,255,0.9); width:54px; height:54px;
+        }
+        .video-number {
+            position:absolute; top:8px; right:10px; background:rgba(0,0,0,0.6); color:white; font-size:0.7rem;
+            font-weight:600; padding:3px 8px; border-radius:20px; z-index:4;
+        }
+
+        .video-modal {
+            position:fixed; top:0; left:0; width:100%; height:100%; z-index:2000; display:flex;
+            align-items:center; justify-content:center; background:rgba(0,10,25,0.92);
+            backdrop-filter:blur(20px) saturate(180%); opacity:0; visibility:hidden;
+            transition:opacity 0.4s,visibility 0.4s;
+        }
+        .video-modal.active { opacity:1; visibility:visible; }
+        .video-modal-content {
+            background:rgba(0,20,40,0.85); backdrop-filter:blur(30px); border:1px solid var(--glass-border);
+            border-radius:24px; padding:2rem; max-width:800px; width:92%; box-shadow:var(--shadow-dark);
+        }
+        .modal-video-wrapper {
+            width:100%; border-radius:16px; overflow:hidden; margin-bottom:1.5rem; background:#000;
+        }
+        .modal-video-wrapper video { width:100%; display:block; aspect-ratio:16/9; }
+        .modal-caption {
+            color:var(--text-primary); font-size:1rem; line-height:1.8; margin:1rem 0;
+            text-shadow:0 1px 5px rgba(0,0,0,0.8); text-align:right;
+        }
+        .modal-caption strong { color:#00ffff; font-size:1.2rem; display:block; margin-bottom:0.5rem; }
+        .modal-close {
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;
+            padding:0.6rem 1.8rem; border-radius:25px; cursor:pointer; font-weight:600;
+        }
+        .modal-close:hover { background:rgba(255,50,50,0.3); }
+
+        .map-container {
+            width:100%; height:480px; border-radius:18px; overflow:hidden; border:2px solid var(--glass-border);
+            box-shadow:var(--shadow-dark);
+        }
+        .map-legend {
+            display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; margin-top:1.5rem;
+        }
+        .map-legend-item {
+            display:flex; align-items:center; gap:0.4rem; background:var(--glass-bg); backdrop-filter:blur(10px);
+            padding:0.5rem 1rem; border-radius:25px; border:1px solid var(--glass-border); font-size:0.78rem;
+            cursor:pointer;
+        }
+        .map-legend-item:hover { border-color:var(--cyan-glow); }
+        .map-legend-dot { width:10px; height:10px; border-radius:50%; }
+
+        .site-footer {
+            background:rgba(0,12,28,0.9); backdrop-filter:blur(14px); border-top:1px solid var(--glass-border);
+            padding:2rem 1.5rem; text-align:center;
+        }
+        .footer-logo { font-family:'Scheherazade New',serif; font-size:1.5rem; color:var(--cyan-glow); }
+        .footer-social { display:flex; gap:1rem; justify-content:center; margin:1rem 0; }
+        .footer-social a { color:var(--text-secondary); font-size:1.3rem; transition:all var(--transition-fast); }
+        .footer-social a:hover { color:var(--cyan-glow); transform:translateY(-3px); }
+        .footer-text { font-size:0.78rem; color:var(--text-muted); opacity:0.7; }
+
+        @media (max-width:1024px) { .video-grid { grid-template-columns:repeat(3,1fr); } }
+        @media (max-width:768px) {
+            .video-grid { grid-template-columns:repeat(2,1fr); }
+            .manager-card { flex-direction:column; text-align:center; }
+            .manager-info { text-align:center; }
+            .manager-social { justify-content:center; }
+            .map-container { height:350px; }
+        }
+        @media (max-width:480px) {
+            .video-grid { grid-template-columns:1fr 1fr; }
+            .floating-toolbar { right:1rem; bottom:1rem; }
+            .toolbar-btn { padding:0.6rem 1rem; font-size:0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="wave-container"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
+        <div class="preloader-logo"><i class="fa-solid fa-fish-fins"></i> اورکا لند</div>
+    </div>
+
+    <div class="local-photo-bg"></div>
+
+    <header id="header">
+        <div class="header-container">
+            <a class="logo" id="logoHome"><i class="fa-solid fa-water"></i> اورکا لند</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="pageHome" class="page active">
+            <section class="hero">
+                <div class="hero-image-container"><img class="hero-image" src="hero-image.jpg" alt="اورکا لند" loading="eager"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">مرکز تخصصی شنا اورکا لند</h1>
+                    <p class="hero-subtitle">آموزش حرفه‌ای شنا با مربیان نخبه | ۴ استخر مجهز در تهران</p>
+                </div>
+            </section>
+
+            <section class="section" id="features">
+                <div class="section-glass">
+                    <div class="section-header"><h2 class="section-title">چرا اورکا لند؟</h2><p class="section-subtitle">با به‌روزترین متدهای آموزشی</p></div>
+                    <div class="features-mini-grid">
+                        <div class="feature-mini-card"><i class="fa-solid fa-medal"></i><h4>مربیان نخبه</h4><p>مدارک معتبر بین‌المللی</p></div>
+                        <div class="feature-mini-card"><i class="fa-solid fa-person-swimming"></i><h4>تکنیک پیشرفته</h4><p>کرال، پروانه، قورباغه</p></div>
+                        <div class="feature-mini-card"><i class="fa-solid fa-stopwatch"></i><h4>Swimrun تخصصی</h4><p>تمرینات ترکیبی شنا و دو</p></div>
+                        <div class="feature-mini-card"><i class="fa-solid fa-location-dot"></i><h4>۴ استخر مجهز</h4><p>شیرودی، اشراق، اندیشه، مینی‌سینی</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="manager">
+                <div class="section-glass" style="text-align:center;">
+                    <div class="section-header"><h2 class="section-title">موسس مدرسه شنا</h2></div>
+                    <div class="manager-card">
+                        <div class="manager-photo-frame"><img src="reza.jpg" alt="رضا تقی‌زاده"></div>
+                        <div class="manager-info">
+                            <div class="manager-name">رضا تقی‌زاده</div>
+                            <div class="manager-role">موسس اورکا لند</div>
+                            <div class="manager-exp">+۲۲ سال سابقه درخشان</div>
+                            <p class="manager-bio">
+                                با بیش از ۲۲ سال تجربه در آموزش شنا و مدیریت تیم‌های حرفه‌ای، دارنده مدارک بین‌المللی مربیگری و متخصص در تکنیک‌های روز دنیا. هدف ما ساختن نسلی از شناگران قوی و با اعتماد به نفس است.
+                            </p>
+                            <div class="manager-social">
+                                <a href="https://www.instagram.com/orca.rt?igsh=MXhxaXd3YzNseGR6NA==" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://t.me/Orcalandswimming" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="location-section" id="location">
+                <div class="section-glass">
+                    <div class="section-header"><h2 class="section-title">📍 استخرهای اورکا لند</h2><p class="section-subtitle">۴ استخر مجهز در تهران — برای مسیریابی کلیک کنید</p></div>
+                    <div class="map-container"><div id="leafletMap" style="width:100%;height:100%;"></div></div>
+                    <div class="map-legend" id="mapLegend"></div>
+                </div>
+            </section>
+        </div>
+
+        <div id="pageVideos" class="page">
+            <section class="section">
+                <div class="section-glass">
+                    <div class="section-header"><h2 class="section-title">🎬 ویدیوهای آموزشی</h2><p class="section-subtitle">۱۰ ویدیوی تخصصی — برای پخش کلیک کنید</p></div>
+                    <div class="video-grid" id="videoGrid"></div>
+                    <div style="text-align:center;margin-top:2rem;">
+                        <button class="btn-secondary" id="backToHomeBtn" style="background:rgba(255,255,255,0.07);border:1px solid var(--glass-border);padding:0.8rem 2rem;border-radius:25px;color:white;cursor:pointer;">
+                            <i class="fa-solid fa-arrow-right"></i> بازگشت به خانه
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="floating-toolbar" id="floatingToolbar">
+        <button class="toolbar-btn" id="floatVideosBtn"><i class="fa-solid fa-play"></i> ویدیوها</button>
+        <a href="#location" class="toolbar-btn"><i class="fa-solid fa-location-dot"></i> استخرها</a>
+    </div>
+
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="modal-video-wrapper"><video id="modalVideoPlayer" controls playsinline><source src="" type="video/mp4"></video></div>
+            <div class="modal-caption" id="modalCaption"></div>
+            <button class="modal-close" id="modalClose">بستن</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo"><i class="fa-solid fa-fish-fins"></i> اورکا لند</div>
+            <p style="color:#e0f2fe;">مرکز تخصصی آموزشی تمرینی شنا — تهران</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/orca.land.swimming?igsh=eGN3NG1kaDVtM3Jn" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://t.me/Orcalandswimming" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+            <p class="footer-text">© ۲۰۲۶ اورکا لند</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script>
+        (function() {
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                    setTimeout(() => { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 800);
+                }, 600);
+            });
+            setTimeout(() => {
+                if (!preloader.classList.contains('hidden')) {
+                    preloader.classList.add('hidden');
+                    setTimeout(() => { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 800);
+                }
+            }, 5000);
+
+            const pageHome = document.getElementById('pageHome');
+            const pageVideos = document.getElementById('pageVideos');
+            const logoHome = document.getElementById('logoHome');
+            const backBtn = document.getElementById('backToHomeBtn');
+            const floatVideosBtn = document.getElementById('floatVideosBtn');
+
+            function showPage(page) {
+                pageHome.classList.remove('active');
+                pageVideos.classList.remove('active');
+                if (page === 'home') {
+                    pageHome.classList.add('active');
+                    const mapEl = document.getElementById('leafletMap');
+                    if (mapEl && mapEl._leafletMap) setTimeout(() => mapEl._leafletMap.invalidateSize(), 100);
+                } else {
+                    pageVideos.classList.add('active');
+                }
+            }
+
+            logoHome.addEventListener('click', () => showPage('home'));
+            backBtn?.addEventListener('click', () => showPage('home'));
+            floatVideosBtn?.addEventListener('click', () => showPage('videos'));
+
+            const videoData = [
+                { title: 'اورکا لند', file: 'r1.mp4', caption: '' },
+                { title: 'مسابقه غورباقه', file: 'r2.mp4', caption: '' },
+                { title: 'چرا شنا بهترین ورزش دنیا هست؟', file: 'r3.mp4', caption: 'لطفا راجبش تحقیق کنیم و تحقیق بعدی اینکه چه مربی با چه ویژگی انتخاب بکنیم ' },
+                { title: '', file: 'r4.mp4', caption: 'اولین تجربه آبهای آزاد شناگران زیر ۱۰ سال تا ۱۳ سال و حتی آموزشی های امسال سد لتیان در کنار مریبان خود. شخصا این مورد رو بدون پروتکل های امنیتی و نبود مریبان کارکشته اصلا توصیه نمیکنم. انجام این امر کوله باری تجربه و آگاهی تیم مریبان رو نیاز دارد. مزایا برای بچه ها، بالا رفتن اعتماد به نفس، که این امر بسیار مهم هست. آشنا شدن با شنا و استایل شنای آبهای آزاد و مسابقات شنای دریایی. تفاوت های زیادی هست، در مرکز تخصصی آموزشی و تمرینی اورکا لند و دیگر مجموعه های آموزشی' },
+                { title: 'تمرین بدنسازی باشگاه اورکا لند', file: 'r5.mp4', caption: '' },
+                { title: 'تمرین تیم شنای اورکا لند چهارشنا در سد ', file: 'r6.mp4', caption: '' },
+                { title: 'تمرین بدنسازی ویژه و متخص باشگاه اورکا لند ', file: 'r7.mp4', caption: 'شکم دست باز، پوش‌آپ دست بسته، فشار روی پشت بازو، استریم لاین شکم و فیله و تمرینات دیگر که کاملاً سکورت است 😊' },
+                { title: 'آخر تابستون که میشه لتیان برای شناگران باقی میمونه',file: 'r8.mp4', caption: '' },
+                { title: 'سومین مسابقات قهرمانی شهر تهران', file: 'r9.mp4', caption: '' },
+                { title: 'حقایق پنهان شنا ', file: 'r10.mp4', caption: 'در زندگی عصر جدید ماشینی و کم تحرک بودن نسل جدید باعث بروز اختلالات روحی روانی و مشکلات اسکلتی عضلانی حرکتی و ضعف شدید قلبی عروقی و در نهایت مشکلات هورمونی شده است. بهترین راه پیشگیری خواهد بود.' }
+            ];
+
+            const videoGrid = document.getElementById('videoGrid');
+            videoData.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.innerHTML = `
+                    <img class="video-thumb" src="hero-image.jpg" alt="${video.title}">
+                    <span class="video-number">${index+1} از ۱۰</span>
+                    <div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>
+                `;
+                card.addEventListener('click', () => openModal(video));
+                videoGrid.appendChild(card);
+            });
+
+            const videoModal = document.getElementById('videoModal');
+            const modalPlayer = document.getElementById('modalVideoPlayer');
+            const modalCaption = document.getElementById('modalCaption');
+            const modalClose = document.getElementById('modalClose');
+
+            function openModal(video) {
+                modalPlayer.querySelector('source').src = video.file;
+                modalPlayer.load();
+                modalCaption.innerHTML = `<strong>${video.title}</strong>${video.caption ? '<br>'+video.caption : ''}`;
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeModal() {
+                videoModal.classList.remove('active');
+                document.body.style.overflow = '';
+                modalPlayer.pause();
+                modalPlayer.querySelector('source').src = '';
+            }
+            modalClose.addEventListener('click', closeModal);
+            videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal(); });
+
+            function initMap() {
+                const mapEl = document.getElementById('leafletMap');
+                if (!mapEl || typeof L === 'undefined') { setTimeout(initMap, 300); return; }
+                
+                const map = L.map('leafletMap', {
+                    center: [35.7219, 51.3347],
+                    zoom: 11,
+                    zoomControl: false,
+                    scrollWheelZoom: false,
+                    doubleClickZoom: false,
+                    touchZoom: false,
+                    dragging: true
+                });
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 19
+                }).addTo(map);
+
+                const pools = [
+                    { name: 'استخر شیرودی', lat: 35.7006, lng: 51.3966, desc: 'مجموعه ورزشی شیرودی', color: '#00bfff' },
+                    { name: 'فرهنگسرا اشراق', lat: 35.7283, lng: 51.4775, desc: 'استخر فرهنگسرا اشراق', color: '#00e5ff' },
+                    { name: 'استخر اندیشه', lat: 35.7745, lng: 51.3762, desc: 'استخر اندیشه سعادت‌آباد', color: '#40c4ff' },
+                    { name: 'مینی‌سینی', lat: 35.7558, lng: 51.3120, desc: 'استخر مینی‌سینی', color: '#80deea' }
+                ];
+
+                const legend = document.getElementById('mapLegend');
+                legend.innerHTML = '';
+
+                function createIcon(color) {
+                    return L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="background:${color};width:28px;height:28px;border-radius:50%;border:3px solid white;box-shadow:0 0 16px ${color};"></div>`,
+                        iconSize: [28, 28],
+                        iconAnchor: [14, 14],
+                        popupAnchor: [0, -18]
+                    });
+                }
+
+                pools.forEach(pool => {
+                    const marker = L.marker([pool.lat, pool.lng], { icon: createIcon(pool.color) }).addTo(map);
+                    const popupContent = `
+                        <div style="font-family:Vazirmatn;text-align:center;direction:rtl;">
+                            <strong>${pool.name}</strong><br>
+                            <small>${pool.desc}</small><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=${pool.lat},${pool.lng}" target="_blank" rel="noopener" style="color:#00bfff;text-decoration:underline;">مسیریابی</a>
+                        </div>`;
+                    marker.bindPopup(popupContent);
+
+                    const legendItem = document.createElement('span');
+                    legendItem.className = 'map-legend-item';
+                    legendItem.innerHTML = `<span class="map-legend-dot" style="background:${pool.color};"></span>${pool.name}`;
+                    legendItem.addEventListener('click', () => {
+                        window.open(`https://www.google.com/maps/dir/?api=1&destination=${pool.lat},${pool.lng}`, '_blank');
+                    });
+                    legend.appendChild(legendItem);
+                });
+
+                const bounds = L.latLngBounds(pools.map(p => [p.lat, p.lng]));
+                map.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
+                setTimeout(() => map.invalidateSize(), 200);
+                window.addEventListener('resize', () => map.invalidateSize());
+                mapEl._leafletMap = map;
+            }
+
+            if (document.getElementById('leafletMap')) initMap();
+        })();
+    </script>
+</body>
+</html>
