@@ -130,10 +130,52 @@
         .features-mini-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; max-width:900px; margin:0 auto; }
         .feature-mini-card { background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:14px; padding:1.5rem 1rem; text-align:center; }
         .feature-mini-card i { font-size:2rem; color:var(--cyan-glow); margin-bottom:0.6rem; }
-        .manager-card { background:linear-gradient(145deg,rgba(0,191,255,0.12) 0%,rgba(0,255,255,0.08) 100%); backdrop-filter:blur(30px); border:1px solid rgba(0,255,255,0.25); border-radius:28px; padding:2rem; max-width:600px; margin:2rem auto; display:flex; align-items:center; gap:2rem; box-shadow:0 20px 60px rgba(0,0,0,0.7); }
-        .manager-photo-frame { width:150px; height:150px; border-radius:50%; overflow:hidden; border:3px solid var(--cyan-glow); }
+
+        .manager-card { 
+            background:linear-gradient(145deg,rgba(0,191,255,0.12) 0%,rgba(0,255,255,0.08) 100%); 
+            backdrop-filter:blur(30px); border:1px solid rgba(0,255,255,0.25); border-radius:28px; 
+            padding:2rem; max-width:600px; margin:2rem auto; display:flex; align-items:center; gap:2rem; 
+            box-shadow:0 20px 60px rgba(0,0,0,0.7); 
+        }
+        .manager-photo-section {
+            flex-shrink: 0;
+        }
+        .manager-photo-frame { 
+            width:150px; height:150px; border-radius:50%; overflow:hidden; 
+            border:3px solid var(--cyan-glow); box-shadow:0 0 25px rgba(0,255,255,0.4);
+        }
         .manager-photo-frame img { width:100%; height:100%; object-fit:cover; }
         .manager-name { font-family:'Scheherazade New',serif; font-size:2rem; font-weight:700; color:var(--cyan-glow); }
+
+        /* آیکون‌های منتقل شده به بالای اطلاعات */
+        .manager-social-top {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        .manager-social-top a {
+            color: #ffffff;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.08);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+        }
+        .manager-social-top a:hover {
+            color: var(--cyan-glow);
+            background: rgba(0,191,255,0.15);
+            transform: translateY(-3px);
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        }
+
         .video-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; max-width:1100px; margin:0 auto; }
         .video-card { position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden; cursor:pointer; border:1px solid var(--glass-border); }
         .video-thumb { width:100%; height:100%; object-fit:cover; }
@@ -146,8 +188,14 @@
         .map-legend-dot { width:10px; height:10px; border-radius:50%; }
         .site-footer { background:rgba(0,12,28,0.9); backdrop-filter:blur(14px); border-top:1px solid var(--glass-border); padding:2rem 1.5rem; text-align:center; }
         .footer-logo { font-family:'Scheherazade New',serif; font-size:1.5rem; color:var(--cyan-glow); }
-        .footer-social { display:flex; gap:1rem; justify-content:center; margin:1rem 0; }
-        @media (max-width:768px) { .video-grid { grid-template-columns:repeat(2,1fr); } .manager-card { flex-direction:column; text-align:center; } }
+        .footer-social { display:flex; gap:2rem; justify-content:center; margin:1.5rem 0; }
+        .footer-social a { color: #ffffff; font-size: 2.5rem; transition: all 0.3s; }
+        .footer-social a:hover { color: var(--cyan-glow); transform: translateY(-3px); }
+        @media (max-width:768px) { 
+            .video-grid { grid-template-columns:repeat(2,1fr); } 
+            .manager-card { flex-direction:column; text-align:center; } 
+            .manager-social-top { justify-content:center; }
+        }
     </style>
 </head>
 <body>
@@ -183,16 +231,21 @@
                 <div class="section-glass" style="text-align:center;">
                     <div class="section-header"><h2 class="section-title">موسس مرکز تخصصی شنا</h2><p>با مجوز رسمی فدراسیون شنا</p></div>
                     <div class="manager-card">
-                        <div class="manager-photo-frame"><img src="reza.jpg" alt="رضا تقی‌زاده موسس و مدیر مرکز تخصصی شنا اورکا لند"></div>
+                        <div class="manager-photo-section">
+                            <div class="manager-photo-frame">
+                                <img src="reza.jpg" alt="رضا تقی‌زاده موسس و مدیر مرکز تخصصی شنا اورکا لند">
+                            </div>
+                        </div>
                         <div class="manager-info">
+                            <!-- آیکون‌های منتقل شده به بالای اسم -->
+                            <div class="manager-social-top">
+                                <a href="https://www.instagram.com/orca.rt?igsh=MXhxaXd3YzNseGR6NA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://t.me/Orcalandswimming" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                            </div>
                             <div class="manager-name">رضا تقی‌زاده</div>
                             <p>موسس مرکز تخصصی شنا اورکا لند</p>
                             <p>+۲۲ سال سابقه درخشان</p>
                             <p>با بیش از ۲۲ سال تجربه در آموزش شنا و مدیریت تیم‌های حرفه‌ای، دارنده مدارک بین‌المللی مربیگری.</p>
-                            <div class="manager-social">
-                                <a href="https://www.instagram.com/orca.rt?igsh=MXhxaXd3YzNseGR6NA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="https://t.me/Orcalandswimming" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,7 +308,6 @@
             const map=L.map('leafletMap',{center:[35.74,51.44],zoom:12,zoomControl:true,scrollWheelZoom:true});
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 
-            // مختصات دقیق کاربر + لینک‌های مستقیم Google Maps
             const pools=[
                 {name:'استخر شیرودی',lat:35.710387,lng:51.427407,desc:'مجموعه ورزشی شهید شیرودی',color:'#00bfff',url:'https://www.google.com/maps/dir/?api=1&destination=35.710387,51.427407'},
                 {name:'فرهنگسرای اشراق',lat:35.731183,lng:51.549293,desc:'استخر فرهنگسرای اشراق',color:'#00e5ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.731183,51.549293'},
