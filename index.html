@@ -11,10 +11,11 @@
     <link rel="canonical" href="https://orcaland.com">
     <meta property="og:title" content="اورکا لند | آموزش حرفه‌ای شنا تهران | رضا تقی‌زاده">
     <meta property="og:description" content="مرکز تخصصی شنا اورکا لند با مدیریت رضا تقی‌زاده و مجوز رسمی فدراسیون. ۶ استخر در تهران.">
-    <meta property="og:image" content="reza.jpg">
-    <meta property="og:image:alt" content="رضا تقی‌زاده موسس مرکز تخصصی شنا اورکا لند">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="600">
+    <meta property="og:image" content="hero-image.jpg">
+    <meta property="og:image:alt" content="مرکز تخصصی شنا اورکا لند تهران - آموزش حرفه‌ای شنا">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:url" content="https://orcaland.com">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fa_IR">
@@ -22,16 +23,16 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="اورکا لند | آموزش حرفه‌ای شنا تهران">
     <meta name="twitter:description" content="مرکز تخصصی شنا اورکا لند با مدیریت رضا تقی‌زاده. ۶ استخر در تهران.">
-    <meta name="twitter:image" content="reza.jpg">
-    <meta name="twitter:image:alt" content="رضا تقی‌زاده موسس اورکا لند">
-    <link rel="image_src" href="reza.jpg">
+    <meta name="twitter:image" content="hero-image.jpg">
+    <meta name="twitter:image:alt" content="مرکز تخصصی شنا اورکا لند تهران">
+    <link rel="image_src" href="hero-image.jpg">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "اورکا لند - مرکز تخصصی شنا",
         "description": "مرکز تخصصی آموزشی تمرینی شنا اورکا لند با مدیریت رضا تقی‌زاده و مجوز رسمی فدراسیون شنا. آموزش کرال، پروانه، قورباغه و Swimrun.",
-        "image": "reza.jpg",
+        "image": "hero-image.jpg",
         "founder": {
             "@type": "Person",
             "name": "رضا تقی‌زاده",
@@ -49,6 +50,28 @@
             { "@type": "Place", "name": "استخر نگین", "address": "استخر نگین تهران" }
         ],
         "sameAs": ["https://www.instagram.com/orca.rt", "https://t.me/Orcalandswimming", "https://www.instagram.com/orca.land.swimming"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "رضا تقی‌زاده",
+        "image": "reza.jpg",
+        "jobTitle": "موسس مرکز تخصصی شنا اورکا لند با مجوز رسمی فدراسیون شنا",
+        "description": "مربی شنا با بیش از ۲۲ سال سابقه، دارنده مدارک بین‌المللی مربیگری و موسس اورکا لند",
+        "url": "https://www.instagram.com/orca.rt"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageObject",
+        "contentUrl": "hero-image.jpg",
+        "name": "مرکز تخصصی شنا اورکا لند تهران",
+        "description": "آموزش حرفه‌ای شنا در مرکز تخصصی اورکا لند با مربیان نخبه و ۶ استخر مجهز در تهران",
+        "caption": "مرکز تخصصی آموزشی تمرینی شنا اورکا لند",
+        "representativeOfPage": true
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,58 +153,45 @@
         .features-mini-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; max-width:900px; margin:0 auto; }
         .feature-mini-card { background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:14px; padding:1.5rem 1rem; text-align:center; }
         .feature-mini-card i { font-size:2rem; color:var(--cyan-glow); margin-bottom:0.6rem; }
-
         .manager-card { 
             background:linear-gradient(145deg,rgba(0,191,255,0.12) 0%,rgba(0,255,255,0.08) 100%); 
             backdrop-filter:blur(30px); border:1px solid rgba(0,255,255,0.25); border-radius:28px; 
             padding:2rem; max-width:600px; margin:2rem auto; display:flex; align-items:center; gap:2rem; 
             box-shadow:0 20px 60px rgba(0,0,0,0.7); 
         }
-        .manager-photo-section {
-            flex-shrink: 0;
-        }
+        .manager-photo-section { flex-shrink: 0; }
         .manager-photo-frame { 
             width:150px; height:150px; border-radius:50%; overflow:hidden; 
             border:3px solid var(--cyan-glow); box-shadow:0 0 25px rgba(0,255,255,0.4);
         }
         .manager-photo-frame img { width:100%; height:100%; object-fit:cover; }
         .manager-name { font-family:'Scheherazade New',serif; font-size:2rem; font-weight:700; color:var(--cyan-glow); }
-
-        /* آیکون‌های منتقل شده به بالای اطلاعات */
         .manager-social-top {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-start;
-            margin-bottom: 0.8rem;
+            display: flex; gap: 1rem; justify-content: flex-start; margin-bottom: 0.8rem;
         }
         .manager-social-top a {
-            color: #ffffff;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.08);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
+            color: #ffffff; font-size: 1.8rem; transition: all 0.3s ease;
+            background: rgba(255,255,255,0.08); width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);
         }
         .manager-social-top a:hover {
-            color: var(--cyan-glow);
-            background: rgba(0,191,255,0.15);
-            transform: translateY(-3px);
-            border-color: var(--cyan-glow);
-            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+            color: var(--cyan-glow); background: rgba(0,191,255,0.15);
+            transform: translateY(-3px); border-color: var(--cyan-glow); box-shadow: 0 0 15px rgba(0,255,255,0.3);
         }
-
         .video-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; max-width:1100px; margin:0 auto; }
         .video-card { position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden; cursor:pointer; border:1px solid var(--glass-border); }
         .video-thumb { width:100%; height:100%; object-fit:cover; }
         .video-play-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:48px; height:48px; background:rgba(0,191,255,0.8); border-radius:50%; display:flex; align-items:center; justify-content:center; }
         .video-modal { position:fixed; top:0; left:0; width:100%; height:100%; z-index:2000; display:flex; align-items:center; justify-content:center; background:rgba(0,10,25,0.92); backdrop-filter:blur(20px); opacity:0; visibility:hidden; transition:0.4s; }
         .video-modal.active { opacity:1; visibility:visible; }
+        .video-modal-content { background:rgba(0,20,40,0.85); backdrop-filter:blur(30px); border:1px solid var(--glass-border); border-radius:24px; padding:2rem; max-width:800px; width:92%; }
+        .modal-video-wrapper { width:100%; border-radius:16px; overflow:hidden; margin-bottom:1.5rem; background:#000; }
+        .modal-video-wrapper video { width:100%; display:block; aspect-ratio:16/9; }
+        .modal-caption { color:var(--text-primary); font-size:1rem; line-height:1.8; margin:1rem 0; text-align:right; }
+        .modal-caption strong { color:#00ffff; font-size:1.2rem; display:block; margin-bottom:0.5rem; }
+        .modal-close { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.6rem 1.8rem; border-radius:25px; cursor:pointer; font-weight:600; }
+        .modal-close:hover { background:rgba(255,50,50,0.3); }
         .map-container { width:100%; height:480px; border-radius:18px; overflow:hidden; border:2px solid var(--glass-border); }
         .map-legend { display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; margin-top:1.5rem; }
         .map-legend-item { display:flex; align-items:center; gap:0.4rem; background:var(--glass-bg); backdrop-filter:blur(10px); padding:0.5rem 1rem; border-radius:25px; border:1px solid var(--glass-border); font-size:0.78rem; cursor:pointer; }
@@ -210,7 +220,9 @@
     <main>
         <div id="pageHome" class="page active">
             <section class="hero">
-                <div class="hero-image-container"><img class="hero-image" src="hero-image.jpg" alt="مرکز تخصصی شنا اورکا لند تهران"></div>
+                <div class="hero-image-container">
+                    <img class="hero-image" src="hero-image.jpg" alt="مرکز تخصصی شنا اورکا لند تهران - آموزش حرفه‌ای شنا" title="اورکا لند - مرکز تخصصی آموزشی تمرینی شنا" loading="eager">
+                </div>
                 <div class="hero-content">
                     <h1 class="hero-title">مرکز تخصصی شنا اورکا لند</h1>
                     <p class="hero-subtitle">آموزش حرفه‌ای شنا با مربیان نخبه | ۶ استخر مجهز در تهران<br>۶ مجموعه | شرق تهران . غرب تهران . شمال تهران . مرکز تهران</p>
@@ -237,7 +249,6 @@
                             </div>
                         </div>
                         <div class="manager-info">
-                            <!-- آیکون‌های منتقل شده به بالای اسم -->
                             <div class="manager-social-top">
                                 <a href="https://www.instagram.com/orca.rt?igsh=MXhxaXd3YzNseGR6NA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                                 <a href="https://t.me/Orcalandswimming" target="_blank"><i class="fa-brands fa-telegram"></i></a>
@@ -274,6 +285,21 @@
         <button class="toolbar-btn" id="floatVideosBtn"><i class="fa-solid fa-play"></i> ویدیوها</button>
         <a href="#location" class="toolbar-btn"><i class="fa-solid fa-location-dot"></i> استخرها</a>
     </div>
+
+    <!-- مودال پخش ویدیو -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="modal-video-wrapper">
+                <video id="modalVideoPlayer" controls playsinline>
+                    <source src="" type="video/mp4">
+                    مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                </video>
+            </div>
+            <div class="modal-caption" id="modalCaption"></div>
+            <button class="modal-close" id="modalClose">بستن</button>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <div class="footer-logo"><i class="fa-solid fa-fish-fins"></i> اورکا لند</div>
         <p>مرکز تخصصی آموزشی تمرینی شنا — تهران</p>
@@ -283,6 +309,7 @@
         </div>
         <p>© ۲۰۲۵ اورکا لند</p>
     </footer>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         document.getElementById('preloader').classList.add('hidden');
@@ -291,16 +318,53 @@
         document.getElementById('backToHomeBtn').onclick=()=>{home.classList.add('active');videos.classList.remove('active');initMap();};
         document.getElementById('floatVideosBtn').onclick=()=>{videos.classList.add('active');home.classList.remove('active');};
 
-        const videoData=[...Array(10)].map((_,i)=>({title:`ویدیوی ${i+1}`,file:`r${i+1}.mp4`,caption:''}));
-        const vg=document.getElementById('videoGrid');
-        videoData.forEach((v,i)=>{
-            const c=document.createElement('div');
-            c.className='video-card';
-            c.innerHTML=`<img class="video-thumb" src="hero-image.jpg"><span>${i+1} از ۱۰</span><div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>`;
-            c.onclick=()=>{alert(`پخش ${v.file}`);};
+        // ویدیوها با کپشن
+        const videoData = [
+            { title: 'اورکا لند', file: 'r1.mp4', caption: '' },
+            { title: 'مسابقه غورباقه', file: 'r2.mp4', caption: '' },
+            { title: 'چرا شنا بهترین ورزش دنیا هست؟', file: 'r3.mp4', caption: 'لطفا راجبش تحقیق کنیم و تحقیق بعدی اینکه چه مربی با چه ویژگی انتخاب بکنیم' },
+            { title: '', file: 'r4.mp4', caption: 'اولین تجربه آبهای آزاد شناگران زیر ۱۰ سال تا ۱۳ سال و حتی آموزشی های امسال سد لتیان در کنار مریبان خود. شخصا این مورد رو بدون پروتکل های امنیتی و نبود مریبان کارکشته اصلا توصیه نمیکنم. انجام این امر کوله باری تجربه و آگاهی تیم مریبان رو نیاز دارد. مزایا برای بچه ها، بالا رفتن اعتماد به نفس، که این امر بسیار مهم هست.' },
+            { title: 'تمرین بدنسازی باشگاه اورکا لند', file: 'r5.mp4', caption: '' },
+            { title: 'تمرین تیم شنای اورکا لند چهارشنا در سد', file: 'r6.mp4', caption: '' },
+            { title: 'تمرین بدنسازی ویژه و متخص باشگاه اورکا لند', file: 'r7.mp4', caption: 'شکم دست باز، پوش‌آپ دست بسته، فشار روی پشت بازو، استریم لاین شکم و فیله و تمرینات دیگر که کاملاً سکورت است 😊' },
+            { title: 'آخر تابستون که میشه لتیان برای شناگران باقی میمونه', file: 'r8.mp4', caption: '' },
+            { title: 'سومین مسابقات قهرمانی شهر تهران', file: 'r9.mp4', caption: '' },
+            { title: 'حقایق پنهان شنا', file: 'r10.mp4', caption: 'در زندگی عصر جدید ماشینی و کم تحرک بودن نسل جدید باعث بروز اختلالات روحی روانی و مشکلات اسکلتی عضلانی حرکتی و ضعف شدید قلبی عروقی و در نهایت مشکلات هورمونی شده است. بهترین راه پیشگیری خواهد بود.' }
+        ];
+
+        const vg = document.getElementById('videoGrid');
+        videoData.forEach((v, i) => {
+            const c = document.createElement('div');
+            c.className = 'video-card';
+            c.innerHTML = `<img class="video-thumb" src="hero-image.jpg" alt="${v.title || 'ویدیوی آموزشی'}"><span>${i+1} از ۱۰</span><div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>`;
+            c.onclick = () => openModal(v);
             vg.appendChild(c);
         });
 
+        // مودال ویدیو
+        const videoModal = document.getElementById('videoModal');
+        const modalPlayer = document.getElementById('modalVideoPlayer');
+        const modalCaption = document.getElementById('modalCaption');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(video) {
+            modalPlayer.querySelector('source').src = video.file;
+            modalPlayer.load();
+            modalCaption.innerHTML = `<strong>${video.title}</strong>${video.caption ? '<br>'+video.caption : ''}`;
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = '';
+            modalPlayer.pause();
+            modalPlayer.querySelector('source').src = '';
+        }
+        modalClose.addEventListener('click', closeModal);
+        videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal(); });
+
+        // مپ
         function initMap(){
             const mapEl=document.getElementById('leafletMap');
             if(!mapEl||typeof L==='undefined'){setTimeout(initMap,300);return;}
