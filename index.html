@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرکز تخصصی شنا اورکا لند | آموزش حرفه‌ای شنا تهران | رضا تقی‌زاده</title>
     <meta name="description" content="مرکز تخصصی شنا اورکا لند با مدیریت رضا تقی‌زاده و مجوز رسمی فدراسیون شنا. آموزش کرال، پروانه، قورباغه، Swimrun و کراسفیت. ۶ استخر در تهران.">
-    <meta name="keywords" content="رضا تقی‌زاده, اورکا لند, آموزش شنا تهران, استخر شیرودی, فرهنگسرا اشراق, استخر اندیشه, استخر صیاد, استخر ۱۳ غرب, استخر نگین, مربی شنا, کلاس شنا">
+    <meta name="keywords" content="رضا تقی‌زاده, اورکا لند, آموزش شنا تهران, استخر شیرودی, فرهنگسرا اشراق, استخر اندیشه, استخر صیاد, استخر ۱۳ غرب, استخر نگین, مربی شنا, کلاس شنا, سد لتیان, آب های آزاد">
     <meta name="author" content="رضا تقی‌زاده - اورکا لند">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://orcaland.com">
@@ -47,7 +47,8 @@
             { "@type": "Place", "name": "استخر اندیشه", "address": "استخر اندیشه سهروردی" },
             { "@type": "Place", "name": "استخر صیاد", "address": "استخر صیاد شیرازی" },
             { "@type": "Place", "name": "استخر ۱۳ غرب", "address": "استخر ۱۳ غرب تهران" },
-            { "@type": "Place", "name": "استخر نگین", "address": "استخر نگین تهران" }
+            { "@type": "Place", "name": "استخر نگین", "address": "استخر نگین تهران" },
+            { "@type": "Place", "name": "سد لتیان", "address": "تمرینات آب‌های آزاد سد لتیان" }
         ],
         "sameAs": ["https://www.instagram.com/orca.rt", "https://t.me/Orcalandswimming", "https://www.instagram.com/orca.land.swimming"]
     }
@@ -195,6 +196,7 @@
         .map-container { width:100%; height:480px; border-radius:18px; overflow:hidden; border:2px solid var(--glass-border); }
         .map-legend { display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; margin-top:1.5rem; }
         .map-legend-item { display:flex; align-items:center; gap:0.4rem; background:var(--glass-bg); backdrop-filter:blur(10px); padding:0.5rem 1rem; border-radius:25px; border:1px solid var(--glass-border); font-size:0.78rem; cursor:pointer; }
+        .map-legend-item:hover { border-color:var(--cyan-glow); }
         .map-legend-dot { width:10px; height:10px; border-radius:50%; }
         .site-footer { background:rgba(0,12,28,0.9); backdrop-filter:blur(14px); border-top:1px solid var(--glass-border); padding:2rem 1.5rem; text-align:center; }
         .footer-logo { font-family:'Scheherazade New',serif; font-size:1.5rem; color:var(--cyan-glow); }
@@ -263,7 +265,7 @@
             </section>
             <section class="location-section" id="location">
                 <div class="section-glass">
-                    <div class="section-header"><h2 class="section-title">📍 استخرهای اورکا لند</h2><p>۶ استخر مجهز در تهران — برای مسیریابی کلیک کنید</p></div>
+                    <div class="section-header"><h2 class="section-title">📍 استخرها و تمرینات اورکا لند</h2><p>۶ استخر مجهز + سد لتیان — برای مسیریابی کلیک کنید</p></div>
                     <div class="map-container"><div id="leafletMap" style="width:100%;height:100%;"></div></div>
                     <div class="map-legend" id="mapLegend"></div>
                 </div>
@@ -286,7 +288,6 @@
         <a href="#location" class="toolbar-btn"><i class="fa-solid fa-location-dot"></i> استخرها</a>
     </div>
 
-    <!-- مودال پخش ویدیو -->
     <div class="video-modal" id="videoModal">
         <div class="video-modal-content">
             <div class="modal-video-wrapper">
@@ -364,12 +365,12 @@
         videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal(); });
 
-        // مپ
+        // مپ با ۶ استخر + سد لتیان
         function initMap(){
             const mapEl=document.getElementById('leafletMap');
             if(!mapEl||typeof L==='undefined'){setTimeout(initMap,300);return;}
             if(mapEl._leafletMap)mapEl._leafletMap.remove();
-            const map=L.map('leafletMap',{center:[35.74,51.44],zoom:12,zoomControl:true,scrollWheelZoom:true});
+            const map=L.map('leafletMap',{center:[35.74,51.44],zoom:11,zoomControl:true,scrollWheelZoom:true});
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 
             const pools=[
@@ -378,7 +379,8 @@
                 {name:'استخر اندیشه',lat:35.727865,lng:51.444777,desc:'استخر اندیشه سهروردی',color:'#40c4ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.727865,51.444777'},
                 {name:'استخر صیاد',lat:35.768822,lng:51.461101,desc:'استخر صیاد شیرازی',color:'#ff6b6b',url:'https://www.google.com/maps/dir/?api=1&destination=35.768822,51.461101'},
                 {name:'استخر ۱۳ غرب',lat:35.751160,lng:51.364435,desc:'استخر ۱۳ غرب تهران',color:'#ffd93d',url:'https://www.google.com/maps/dir/?api=1&destination=35.751160,51.364435'},
-                {name:'استخر نگین',lat:35.724473,lng:51.445761,desc:'استخر نگین تهران',color:'#aa80ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.724473,51.445761'}
+                {name:'استخر نگین',lat:35.724473,lng:51.445761,desc:'استخر نگین تهران',color:'#aa80ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.724473,51.445761'},
+                {name:'سد لتیان',lat:35.808795,lng:51.675315,desc:'تمرینات آب‌های آزاد سد لتیان',color:'#00ff88',url:'https://www.google.com/maps/dir/?api=1&destination=35.808795,51.675315'}
             ];
             const legend=document.getElementById('mapLegend');
             legend.innerHTML='';
