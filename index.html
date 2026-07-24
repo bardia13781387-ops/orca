@@ -406,7 +406,7 @@
                         <div class="success-message">
                             <i class="fa-solid fa-circle-check"></i>
                             <h3>ثبت‌نام با موفقیت انجام شد!</h3>
-                            <p>همکاران ما به زودی از طریق تلگرام با شما تماس خواهند گرفت.</p>
+                            <p>پیام شما در تلگرام آماده ارسال است. لطفاً دکمه Send را بزنید.</p>
                             <button class="btn-form" style="margin-top:1.5rem;" onclick="resetForm()">ثبت‌نام مجدد</button>
                         </div>
                     </div>
@@ -566,7 +566,7 @@
             const level = document.getElementById('level').value;
             const notes = document.getElementById('notes').value.trim() || 'ندارد';
 
-            // ساخت پیام برای تلگرام
+            // ساخت پیام
             const message = `🦈 *ثبت‌نام جدید اورکا لند* 🦈\n\n` +
                            `👤 *نام:* ${fullname}\n` +
                            `📞 *تلفن:* ${phone}\n` +
@@ -577,25 +577,12 @@
                            `📅 *تاریخ:* ${new Date().toLocaleDateString('fa-IR')}\n` +
                            `🕒 *ساعت:* ${new Date().toLocaleTimeString('fa-IR')}`;
 
-            // ارسال به تلگرام
-            const botToken = '6574329274:AAHx9oZ0KXB8vFg0bX4eKqP0w8J3eZbQm3s';
-            const chatId = '@Orcalandswimming';
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        showStep(3);
-                    } else {
-                        alert('خطا در ارسال! لطفاً دوباره تلاش کنید یا از طریق تلگرام پیام دهید.');
-                        console.error('Telegram API Error:', data);
-                    }
-                })
-                .catch(error => {
-                    alert('خطا در ارتباط با سرور! لطفاً از طریق تلگرام با ما تماس بگیرید.');
-                    console.error('Fetch Error:', error);
-                });
+            // باز کردن مستقیم تلگرام با پیام آماده
+            const telegramUrl = `https://t.me/Orcalandswimming?text=${encodeURIComponent(message)}`;
+            window.open(telegramUrl, '_blank');
+            
+            // نمایش پیام موفقیت
+            showStep(3);
         }
 
         function resetForm() {
