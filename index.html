@@ -198,69 +198,42 @@
         .map-legend-item { display:flex; align-items:center; gap:0.4rem; background:var(--glass-bg); backdrop-filter:blur(10px); padding:0.5rem 1rem; border-radius:25px; border:1px solid var(--glass-border); font-size:0.78rem; cursor:pointer; }
         .map-legend-item:hover { border-color:var(--cyan-glow); }
         .map-legend-dot { width:10px; height:10px; border-radius:50%; }
-
-        /* ========== استایل‌های بخش ثبت‌نام ========== */
         .registration-section { padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; }
         .registration-glass {
-            background: rgba(0, 20, 40, 0.78);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-radius: 28px;
-            border: 1px solid rgba(0, 255, 255, 0.22);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 191, 255, 0.1);
+            background: rgba(0, 20, 40, 0.78); backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%); border-radius: 28px;
+            border: 1px solid rgba(0, 255, 255, 0.22); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 191, 255, 0.1);
             padding: 2.5rem 2rem;
         }
         .form-step { display: none; animation: fadeSlide 0.4s ease; }
         .form-step.active { display: block; }
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
         .form-group { margin-bottom: 1.8rem; }
-        .form-group label {
-            display: block; font-weight: 600; font-size: 0.9rem;
-            margin-bottom: 0.5rem; color: var(--cyan-glow); letter-spacing: 0.5px;
-        }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--cyan-glow); }
         .form-input, .form-select {
-            width: 100%; padding: 0.9rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px; color: white;
-            font-family: 'Vazirmatn', sans-serif; font-size: 0.9rem;
-            transition: all 0.3s ease; outline: none;
+            width: 100%; padding: 0.9rem 1.2rem; background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.15); border-radius: 16px; color: white;
+            font-family: 'Vazirmatn', sans-serif; font-size: 0.9rem; transition: all 0.3s ease; outline: none;
         }
-        .form-input:focus, .form-select:focus {
-            border-color: var(--cyan-glow); background: rgba(0, 191, 255, 0.08);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
-        }
+        .form-input:focus, .form-select:focus { border-color: var(--cyan-glow); background: rgba(0, 191, 255, 0.08); box-shadow: 0 0 25px rgba(0, 255, 255, 0.15); }
         .form-input.error { border-color: #ff4757; box-shadow: 0 0 15px rgba(255, 71, 87, 0.3); }
         .error-message { color: #ff4757; font-size: 0.7rem; margin-top: 0.3rem; display: none; }
         .form-select option { background: #001a33; color: white; }
         .btn-row { display: flex; gap: 1rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap; }
         .btn-form {
-            background: linear-gradient(135deg, #00bfff, #00e0ff);
-            color: #001a33; border: none; padding: 0.85rem 2.2rem;
-            border-radius: 35px; font-weight: 700; font-size: 0.9rem;
-            cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(0, 191, 255, 0.35); letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #00bfff, #00e0ff); color: #001a33; border: none;
+            padding: 0.85rem 2.2rem; border-radius: 35px; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(0, 191, 255, 0.35);
         }
-        .btn-form:hover {
-            transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0, 255, 255, 0.5);
-        }
-        .btn-form.secondary {
-            background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.2);
-            color: white; box-shadow: none;
-        }
+        .btn-form:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0, 255, 255, 0.5); }
+        .btn-form.secondary { background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.2); color: white; box-shadow: none; }
         .btn-form.secondary:hover { background: rgba(0, 191, 255, 0.1); border-color: var(--cyan-glow); }
-        .success-message {
-            text-align: center; padding: 2rem; animation: fadeSlide 0.5s ease;
-        }
-        .success-message i {
-            font-size: 4rem; color: #00ff88;
-            filter: drop-shadow(0 0 20px #00ff88); margin-bottom: 1rem;
-        }
+        .btn-form:disabled { opacity: 0.6; cursor: not-allowed; }
+        .success-message { text-align: center; padding: 2rem; animation: fadeSlide 0.5s ease; }
+        .success-message i { font-size: 4rem; color: #00ff88; filter: drop-shadow(0 0 20px #00ff88); margin-bottom: 1rem; }
         .success-message h3 { margin-bottom: 0.5rem; color: var(--cyan-glow); }
-
+        .loading-spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(0, 26, 51, 0.3); border-radius: 50%; border-top-color: #001a33; animation: spin 0.8s linear infinite; margin-left: 8px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .site-footer { background:rgba(0,12,28,0.9); backdrop-filter:blur(14px); border-top:1px solid var(--glass-border); padding:2rem 1.5rem; text-align:center; }
         .footer-logo { font-family:'Scheherazade New',serif; font-size:1.5rem; color:var(--cyan-glow); }
         .footer-social { display:flex; gap:2rem; justify-content:center; margin:1.5rem 0; }
@@ -272,9 +245,7 @@
             .manager-social-top { justify-content:center; }
             .registration-glass { padding: 1.8rem 1.2rem; }
         }
-        @media (max-width:480px) {
-            .btn-row { flex-direction: column; }
-        }
+        @media (max-width:480px) { .btn-row { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -290,7 +261,7 @@
         <div id="pageHome" class="page active">
             <section class="hero">
                 <div class="hero-image-container">
-                    <img class="hero-image" src="hero-image.jpg" alt="مرکز تخصصی شنا اورکا لند تهران - آموزش حرفه‌ای شنا" title="اورکا لند - مرکز تخصصی آموزشی تمرینی شنا" loading="eager">
+                    <img class="hero-image" src="hero-image.jpg" alt="مرکز تخصصی شنا اورکا لند تهران" title="اورکا لند" loading="eager">
                 </div>
                 <div class="hero-content">
                     <h1 class="hero-title">مرکز تخصصی شنا اورکا لند</h1>
@@ -337,16 +308,12 @@
                     <div class="map-legend" id="mapLegend"></div>
                 </div>
             </section>
-
-            <!-- ===== بخش ثبت‌نام ===== -->
             <section class="registration-section" id="register">
                 <div class="registration-glass">
                     <div class="section-header" style="margin-bottom: 2rem;">
                         <h2 class="section-title">پیش‌ثبت‌نام آنلاین</h2>
                         <p class="section-subtitle">همین حالا ثبت‌نام کنید و مشاوره رایگان دریافت کنید</p>
                     </div>
-
-                    <!-- مرحله ۱ -->
                     <div class="form-step active" id="step1">
                         <div class="form-group">
                             <label>نام و نام خانوادگی *</label>
@@ -356,7 +323,7 @@
                         <div class="form-group">
                             <label>شماره تماس *</label>
                             <input type="tel" class="form-input" id="phone" placeholder="09xxxxxxxxx">
-                            <span class="error-message" id="phoneError">شماره تماس معتبر نیست (09xxxxxxxxx)</span>
+                            <span class="error-message" id="phoneError">شماره تماس معتبر نیست</span>
                         </div>
                         <div class="form-group">
                             <label>سن</label>
@@ -366,29 +333,21 @@
                             <button class="btn-form" onclick="nextStep(2)">مرحله بعد <i class="fa-solid fa-arrow-left"></i></button>
                         </div>
                     </div>
-
-                    <!-- مرحله ۲ -->
                     <div class="form-step" id="step2">
                         <div class="form-group">
                             <label>رشته مورد نظر *</label>
                             <select class="form-select" id="course">
                                 <option value="">-- انتخاب کنید --</option>
-                                <option>کرال سینه</option>
-                                <option>کرال پشت</option>
-                                <option>شنای پروانه</option>
-                                <option>شنای قورباغه</option>
-                                <option>Swimrun</option>
-                                <option>تمرینات آب‌های آزاد</option>
-                                <option>کراسفیت و بدنسازی شنا</option>
+                                <option>کرال سینه</option><option>کرال پشت</option><option>شنای پروانه</option>
+                                <option>شنای قورباغه</option><option>Swimrun</option>
+                                <option>تمرینات آب‌های آزاد</option><option>کراسفیت و بدنسازی شنا</option>
                             </select>
                             <span class="error-message" id="courseError">لطفاً یک رشته انتخاب کنید</span>
                         </div>
                         <div class="form-group">
                             <label>سطح مهارت</label>
                             <select class="form-select" id="level">
-                                <option>مبتدی</option>
-                                <option>نیمه‌حرفه‌ای</option>
-                                <option>حرفه‌ای</option>
+                                <option>مبتدی</option><option>نیمه‌حرفه‌ای</option><option>حرفه‌ای</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -397,16 +356,14 @@
                         </div>
                         <div class="btn-row">
                             <button class="btn-form secondary" onclick="prevStep(1)"><i class="fa-solid fa-arrow-right"></i> مرحله قبل</button>
-                            <button class="btn-form" onclick="submitRegistration()">ثبت نهایی و ارسال</button>
+                            <button class="btn-form" id="submitBtn" onclick="submitRegistration()">ثبت نهایی و ارسال</button>
                         </div>
                     </div>
-
-                    <!-- مرحله ۳ (موفقیت) -->
                     <div class="form-step" id="step3">
                         <div class="success-message">
                             <i class="fa-solid fa-circle-check"></i>
                             <h3>ثبت‌نام با موفقیت انجام شد!</h3>
-                            <p>پیام شما در تلگرام آماده ارسال است. لطفاً دکمه Send را بزنید.</p>
+                            <p>همکاران ما به زودی با شما تماس خواهند گرفت.</p>
                             <button class="btn-form" style="margin-top:1.5rem;" onclick="resetForm()">ثبت‌نام مجدد</button>
                         </div>
                     </div>
@@ -416,7 +373,7 @@
         <div id="pageVideos" class="page">
             <section class="section">
                 <div class="section-glass">
-                    <div class="section-header"><h2 class="section-title">🎬 ویدیوهای آموزشی</h2><p>۱۰ ویدیوی تخصصی — برای پخش کلیک کنید</p></div>
+                    <div class="section-header"><h2 class="section-title">🎬 ویدیوهای آموزشی</h2><p>۱۲ ویدیوی تخصصی — برای پخش کلیک کنید</p></div>
                     <div class="video-grid" id="videoGrid"></div>
                     <div style="text-align:center;margin-top:2rem;">
                         <button id="backToHomeBtn" style="background:rgba(255,255,255,0.07);border:1px solid var(--glass-border);padding:0.8rem 2rem;border-radius:25px;color:white;cursor:pointer;">بازگشت به خانه</button>
@@ -430,20 +387,13 @@
         <a href="#register" class="toolbar-btn"><i class="fa-solid fa-user-plus"></i> ثبت‌نام</a>
         <a href="#location" class="toolbar-btn"><i class="fa-solid fa-location-dot"></i> استخرها</a>
     </div>
-
     <div class="video-modal" id="videoModal">
         <div class="video-modal-content">
-            <div class="modal-video-wrapper">
-                <video id="modalVideoPlayer" controls playsinline>
-                    <source src="" type="video/mp4">
-                    مرورگر شما از ویدیو پشتیبانی نمی‌کند.
-                </video>
-            </div>
+            <div class="modal-video-wrapper"><video id="modalVideoPlayer" controls playsinline><source src="" type="video/mp4"></video></div>
             <div class="modal-caption" id="modalCaption"></div>
             <button class="modal-close" id="modalClose">بستن</button>
         </div>
     </div>
-
     <footer class="site-footer">
         <div class="footer-logo"><i class="fa-solid fa-fish-fins"></i> اورکا لند</div>
         <p>مرکز تخصصی آموزشی تمرینی شنا — تهران</p>
@@ -453,7 +403,6 @@
         </div>
         <p>© ۲۰۲۵ اورکا لند</p>
     </footer>
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         document.getElementById('preloader').classList.add('hidden');
@@ -462,148 +411,59 @@
         document.getElementById('backToHomeBtn').onclick=()=>{home.classList.add('active');videos.classList.remove('active');initMap();};
         document.getElementById('floatVideosBtn').onclick=()=>{videos.classList.add('active');home.classList.remove('active');};
 
-        // ویدیوها با کپشن
-        const videoData = [
-            { title: 'اورکا لند', file: 'r1.mp4', caption: '' },
-            { title: 'مسابقه غورباقه', file: 'r2.mp4', caption: '' },
-            { title: 'چرا شنا بهترین ورزش دنیا هست؟', file: 'r3.mp4', caption: 'لطفا راجبش تحقیق کنیم و تحقیق بعدی اینکه چه مربی با چه ویژگی انتخاب بکنیم' },
-            { title: '', file: 'r4.mp4', caption: 'اولین تجربه آبهای آزاد شناگران زیر ۱۰ سال تا ۱۳ سال و حتی آموزشی های امسال سد لتیان در کنار مریبان خود. شخصا این مورد رو بدون پروتکل های امنیتی و نبود مریبان کارکشته اصلا توصیه نمیکنم. انجام این امر کوله باری تجربه و آگاهی تیم مریبان رو نیاز دارد. مزایا برای بچه ها، بالا رفتن اعتماد به نفس، که این امر بسیار مهم هست.' },
-            { title: 'تمرین بدنسازی باشگاه اورکا لند', file: 'r5.mp4', caption: '' },
-            { title: 'تمرین تیم شنای اورکا لند چهارشنا در سد', file: 'r6.mp4', caption: '' },
-            { title: 'تمرین بدنسازی ویژه و متخص باشگاه اورکا لند', file: 'r7.mp4', caption: 'شکم دست باز، پوش‌آپ دست بسته، فشار روی پشت بازو، استریم لاین شکم و فیله و تمرینات دیگر که کاملاً سکورت است 😊' },
-            { title: 'آخر تابستون که میشه لتیان برای شناگران باقی میمونه', file: 'r8.mp4', caption: '' },
-            { title: 'سومین مسابقات قهرمانی شهر تهران', file: 'r9.mp4', caption: '' },
-            { title: 'حقایق پنهان شنا', file: 'r10.mp4', caption: 'در زندگی عصر جدید ماشینی و کم تحرک بودن نسل جدید باعث بروز اختلالات روحی روانی و مشکلات اسکلتی عضلانی حرکتی و ضعف شدید قلبی عروقی و در نهایت مشکلات هورمونی شده است. بهترین راه پیشگیری خواهد بود.' }
-        ];
-
-        const vg = document.getElementById('videoGrid');
-        videoData.forEach((v, i) => {
-            const c = document.createElement('div');
-            c.className = 'video-card';
-            c.innerHTML = `<img class="video-thumb" src="hero-image.jpg" alt="${v.title || 'ویدیوی آموزشی'}"><span>${i+1} از ۱۰</span><div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>`;
-            c.onclick = () => openModal(v);
-            vg.appendChild(c);
+        const videoData=[...Array(12)].map((_,i)=>({title:`ویدیوی ${i+1}`,file:`r${i+1}.mp4`,caption:''}));
+        const vg=document.getElementById('videoGrid');
+        videoData.forEach((v,i)=>{
+            const c=document.createElement('div');c.className='video-card';
+            c.innerHTML=`<img class="video-thumb" src="hero-image.jpg"><span>${i+1} از ۱۲</span><div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>`;
+            c.onclick=()=>openModal(v);vg.appendChild(c);
         });
 
-        // مودال ویدیو
-        const videoModal = document.getElementById('videoModal');
-        const modalPlayer = document.getElementById('modalVideoPlayer');
-        const modalCaption = document.getElementById('modalCaption');
-        const modalClose = document.getElementById('modalClose');
+        const videoModal=document.getElementById('videoModal'),modalPlayer=document.getElementById('modalVideoPlayer'),
+              modalCaption=document.getElementById('modalCaption'),modalClose=document.getElementById('modalClose');
+        function openModal(v){modalPlayer.querySelector('source').src=v.file;modalPlayer.load();modalCaption.innerHTML=`<strong>${v.title}</strong>`;videoModal.classList.add('active');document.body.style.overflow='hidden';}
+        function closeModal(){videoModal.classList.remove('active');document.body.style.overflow='';modalPlayer.pause();modalPlayer.querySelector('source').src='';}
+        modalClose.addEventListener('click',closeModal);
+        videoModal.addEventListener('click',(e)=>{if(e.target===videoModal)closeModal();});
+        document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&videoModal.classList.contains('active'))closeModal();});
 
-        function openModal(video) {
-            modalPlayer.querySelector('source').src = video.file;
-            modalPlayer.load();
-            modalCaption.innerHTML = `<strong>${video.title}</strong>${video.caption ? '<br>'+video.caption : ''}`;
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeModal() {
-            videoModal.classList.remove('active');
-            document.body.style.overflow = '';
-            modalPlayer.pause();
-            modalPlayer.querySelector('source').src = '';
-        }
-        modalClose.addEventListener('click', closeModal);
-        videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal(); });
-
-        // ========== منطق فرم ثبت‌نام ==========
-        function showStep(step) {
-            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
+        function showStep(s){document.querySelectorAll('.form-step').forEach(e=>e.classList.remove('active'));document.getElementById('step'+s).classList.add('active');}
+        function nextStep(s){if(s===2&&!validateStep1())return;showStep(s);}
+        function prevStep(s){showStep(s);}
+        function validateStep1(){
+            let v=true;const n=document.getElementById('fullname').value.trim(),p=document.getElementById('phone').value.trim();
+            if(!n){document.getElementById('fullname').classList.add('error');document.getElementById('nameError').style.display='block';v=false;}
+            else{document.getElementById('fullname').classList.remove('error');document.getElementById('nameError').style.display='none';}
+            if(!/^09\d{9}$/.test(p)){document.getElementById('phone').classList.add('error');document.getElementById('phoneError').style.display='block';v=false;}
+            else{document.getElementById('phone').classList.remove('error');document.getElementById('phoneError').style.display='none';}
+            return v;
         }
 
-        function nextStep(step) {
-            if (step === 2 && !validateStep1()) return;
-            showStep(step);
+        const BOT_TOKEN='8763861874:AAGIQnKEMIj_MmRG9AKZtLYjiWWuZOtmDeI';
+        const CHAT_ID='6505652842';
+
+        function submitRegistration(){
+            const course=document.getElementById('course').value;
+            if(!course){document.getElementById('course').classList.add('error');document.getElementById('courseError').style.display='block';return;}
+            document.getElementById('course').classList.remove('error');document.getElementById('courseError').style.display='none';
+            const fullname=document.getElementById('fullname').value.trim(),phone=document.getElementById('phone').value.trim(),
+                  age=document.getElementById('age').value||'تعیین نشده',level=document.getElementById('level').value,
+                  notes=document.getElementById('notes').value.trim()||'ندارد';
+            const msg=`🦈 *ثبت‌نام جدید اورکا لند* 🦈\n\n👤 *نام:* ${fullname}\n📞 *تلفن:* ${phone}\n🎂 *سن:* ${age}\n🏊 *رشته:* ${course}\n📊 *سطح:* ${level}\n📝 *توضیحات:* ${notes}\n\n📅 *تاریخ:* ${new Date().toLocaleDateString('fa-IR')}\n🕒 *ساعت:* ${new Date().toLocaleTimeString('fa-IR')}`;
+            const btn=document.getElementById('submitBtn');btn.innerHTML='<span class="loading-spinner"></span> در حال ارسال...';btn.disabled=true;
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'Markdown'})})
+            .then(r=>r.json()).then(d=>{if(d.ok)showStep(3);else alert('خطا در ارسال!');})
+            .catch(()=>alert('خطا در ارتباط!'))
+            .finally(()=>{btn.innerHTML='ثبت نهایی و ارسال';btn.disabled=false;});
         }
 
-        function prevStep(step) {
-            showStep(step);
-        }
+        function resetForm(){['fullname','phone','age','course','notes'].forEach(id=>document.getElementById(id).value='');document.querySelectorAll('.form-input,.form-select').forEach(e=>e.classList.remove('error'));document.querySelectorAll('.error-message').forEach(e=>e.style.display='none');showStep(1);}
 
-        function validateStep1() {
-            let valid = true;
-            const name = document.getElementById('fullname').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            
-            if (!name) {
-                document.getElementById('fullname').classList.add('error');
-                document.getElementById('nameError').style.display = 'block';
-                valid = false;
-            } else {
-                document.getElementById('fullname').classList.remove('error');
-                document.getElementById('nameError').style.display = 'none';
-            }
-            
-            const phoneRegex = /^09\d{9}$/;
-            if (!phoneRegex.test(phone)) {
-                document.getElementById('phone').classList.add('error');
-                document.getElementById('phoneError').style.display = 'block';
-                valid = false;
-            } else {
-                document.getElementById('phone').classList.remove('error');
-                document.getElementById('phoneError').style.display = 'none';
-            }
-            return valid;
-        }
-
-        function submitRegistration() {
-            const course = document.getElementById('course').value;
-            if (!course) {
-                document.getElementById('course').classList.add('error');
-                document.getElementById('courseError').style.display = 'block';
-                return;
-            }
-            document.getElementById('course').classList.remove('error');
-            document.getElementById('courseError').style.display = 'none';
-
-            // جمع‌آوری اطلاعات فرم
-            const fullname = document.getElementById('fullname').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const age = document.getElementById('age').value || 'تعیین نشده';
-            const level = document.getElementById('level').value;
-            const notes = document.getElementById('notes').value.trim() || 'ندارد';
-
-            // ساخت پیام
-            const message = `🦈 *ثبت‌نام جدید اورکا لند* 🦈\n\n` +
-                           `👤 *نام:* ${fullname}\n` +
-                           `📞 *تلفن:* ${phone}\n` +
-                           `🎂 *سن:* ${age}\n` +
-                           `🏊 *رشته:* ${course}\n` +
-                           `📊 *سطح:* ${level}\n` +
-                           `📝 *توضیحات:* ${notes}\n\n` +
-                           `📅 *تاریخ:* ${new Date().toLocaleDateString('fa-IR')}\n` +
-                           `🕒 *ساعت:* ${new Date().toLocaleTimeString('fa-IR')}`;
-
-            // باز کردن مستقیم تلگرام با پیام آماده
-            const telegramUrl = `https://t.me/Orcalandswimming?text=${encodeURIComponent(message)}`;
-            window.open(telegramUrl, '_blank');
-            
-            // نمایش پیام موفقیت
-            showStep(3);
-        }
-
-        function resetForm() {
-            document.getElementById('fullname').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('age').value = '';
-            document.getElementById('course').value = '';
-            document.getElementById('notes').value = '';
-            document.querySelectorAll('.form-input, .form-select').forEach(el => el.classList.remove('error'));
-            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
-            showStep(1);
-        }
-
-        // مپ با ۶ استخر + سد لتیان
         function initMap(){
-            const mapEl=document.getElementById('leafletMap');
-            if(!mapEl||typeof L==='undefined'){setTimeout(initMap,300);return;}
+            const mapEl=document.getElementById('leafletMap');if(!mapEl||typeof L==='undefined'){setTimeout(initMap,300);return;}
             if(mapEl._leafletMap)mapEl._leafletMap.remove();
             const map=L.map('leafletMap',{center:[35.74,51.44],zoom:11,zoomControl:true,scrollWheelZoom:true});
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
-
             const pools=[
                 {name:'استخر شیرودی',lat:35.710387,lng:51.427407,desc:'مجموعه ورزشی شهید شیرودی',color:'#00bfff',url:'https://www.google.com/maps/dir/?api=1&destination=35.710387,51.427407'},
                 {name:'فرهنگسرای اشراق',lat:35.731183,lng:51.549293,desc:'استخر فرهنگسرای اشراق',color:'#00e5ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.731183,51.549293'},
@@ -611,19 +471,16 @@
                 {name:'استخر صیاد',lat:35.768822,lng:51.461101,desc:'استخر صیاد شیرازی',color:'#ff6b6b',url:'https://www.google.com/maps/dir/?api=1&destination=35.768822,51.461101'},
                 {name:'استخر ۱۳ غرب',lat:35.751160,lng:51.364435,desc:'استخر ۱۳ غرب تهران',color:'#ffd93d',url:'https://www.google.com/maps/dir/?api=1&destination=35.751160,51.364435'},
                 {name:'استخر نگین',lat:35.724473,lng:51.445761,desc:'استخر نگین تهران',color:'#aa80ff',url:'https://www.google.com/maps/dir/?api=1&destination=35.724473,51.445761'},
-                {name:'سد لتیان',lat:35.808795,lng:51.675315,desc:'تمرینات آب‌های آزاد سد لتیان',color:'#00ff88',url:'https://www.google.com/maps/dir/?api=1&destination=35.808795,51.675315'}
+                {name:'سد لتیان',lat:35.808795,lng:51.675315,desc:'تمرینات آب‌های آزاد',color:'#00ff88',url:'https://www.google.com/maps/dir/?api=1&destination=35.808795,51.675315'}
             ];
-            const legend=document.getElementById('mapLegend');
-            legend.innerHTML='';
+            const legend=document.getElementById('mapLegend');legend.innerHTML='';
             pools.forEach(p=>{
                 const marker=L.marker([p.lat,p.lng],{icon:L.divIcon({html:`<div style="background:${p.color};width:28px;height:28px;border-radius:50%;border:3px solid white;box-shadow:0 0 16px ${p.color};"></div>`,iconSize:[28,28],iconAnchor:[14,14]})}).addTo(map);
-                marker.bindPopup(`<div style="font-family:Vazirmatn;text-align:center;direction:rtl;"><strong>${p.name}</strong><br><small>${p.desc}</small><br><a href="${p.url}" target="_blank" style="color:#00bfff;">🗺️ مسیریابی</a></div>`);
+                marker.bindPopup(`<div style="font-family:Vazirmatn;text-align:center;direction:rtl;"><strong>${p.name}</strong><br><small>${p.desc}</small><br><a href="${p.url}" target="_blank">🗺️ مسیریابی</a></div>`);
                 marker.on('click',()=>window.open(p.url,'_blank'));
-                const li=document.createElement('span');
-                li.className='map-legend-item';
+                const li=document.createElement('span');li.className='map-legend-item';
                 li.innerHTML=`<span class="map-legend-dot" style="background:${p.color};"></span>${p.name}`;
-                li.onclick=()=>window.open(p.url,'_blank');
-                legend.appendChild(li);
+                li.onclick=()=>window.open(p.url,'_blank');legend.appendChild(li);
             });
             map.fitBounds(L.latLngBounds(pools.map(p=>[p.lat,p.lng])),{padding:[40,40],maxZoom:13});
             mapEl._leafletMap=map;
